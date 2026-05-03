@@ -1,4 +1,4 @@
-import type {Metadata} from 'next';
+import type { Metadata } from 'next';
 import { Inter, Oswald } from 'next/font/google';
 import SmoothScroll from '@/components/layout/SmoothScroll';
 import Header from '@/components/layout/Header';
@@ -47,9 +47,9 @@ export const metadata: Metadata = {
     images: ['/og-image.jpg'],
   },
   icons: {
-    icon: '/img/empresa/favicon.ico',
-    shortcut: '/img/empresa/favicon.ico',
-    apple: '/img/empresa/favicon.ico',
+    icon: '/img/empresa/favicon.png',
+    shortcut: '/img/empresa/favicon.png',
+    apple: '/img/empresa/favicon.png',
   },
 };
 
@@ -89,7 +89,7 @@ const jsonLd = {
   ]
 };
 
-export default function RootLayout({children}: {children: React.ReactNode}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es-PE" className={`${inter.variable} ${oswald.variable}`}>
       <body suppressHydrationWarning>

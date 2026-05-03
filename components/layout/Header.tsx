@@ -60,9 +60,9 @@ export default function Header() {
             <Image 
               src="/img/empresa/rsconsorcioindustrial.png" 
               alt="RS Consorcio Industrial" 
-              width={180} 
-              height={60} 
-              className="h-12 lg:h-16 w-auto object-contain"
+              width={550} 
+              height={84} 
+              className="h-10 w-auto lg:w-[275px] lg:h-[42px] object-contain"
               priority
             />
           </Link>
