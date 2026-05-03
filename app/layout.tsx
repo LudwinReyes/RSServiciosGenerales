@@ -46,6 +46,11 @@ export const metadata: Metadata = {
     description: 'Soluciones integrales de infraestructura para el sector minero, pesquero y corporativo en el Perú.',
     images: ['/og-image.jpg'],
   },
+  icons: {
+    icon: '/img/empresa/favicon.ico',
+    shortcut: '/img/empresa/favicon.ico',
+    apple: '/img/empresa/favicon.ico',
+  },
 };
 
 const jsonLd = {

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'motion/react';
+import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
 import { 
   useSmartHeader, 
@@ -56,14 +57,14 @@ export default function Header() {
           
           {/* Logo */}
           <Link href="/" className="relative z-50 flex items-center gap-2 group">
-            <div className="flex flex-col">
-              <span className="font-heading text-xl lg:text-2xl uppercase tracking-tighter leading-none text-white group-hover:text-brand-blue transition-colors">
-                RS <span className="text-brand-red">Consorcio</span>
-              </span>
-              <span className="font-body text-[10px] tracking-widest text-slate-400 uppercase mt-1">
-                Servicios Generales
-              </span>
-            </div>
+            <Image 
+              src="/img/empresa/rsconsorcioindustrial.png" 
+              alt="RS Consorcio Industrial" 
+              width={180} 
+              height={60} 
+              className="h-12 lg:h-16 w-auto object-contain"
+              priority
+            />
           </Link>
 
           {/* Desktop Nav */}
