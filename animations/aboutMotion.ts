@@ -20,7 +20,7 @@ export const heroTextVariants: Variants = {
     clipPath: 'inset(0 0 0% 0)',
     transition: {
       duration: 1.1,
-      ease: [0.76, 0, 0.24, 1],
+      ease: [0.76, 0, 0.24, 1] as const,
     },
   },
 };
@@ -37,7 +37,7 @@ export const fadeUpVariants: Variants = {
     filter: 'blur(0px)',
     transition: {
       duration: 0.9,
-      ease: [0.16, 1, 0.3, 1],
+      ease: [0.16, 1, 0.3, 1] as const,
     },
   },
 };
@@ -64,7 +64,7 @@ export const pillarCardVariants: Variants = {
     filter: 'blur(0px)',
     transition: {
       duration: 0.8,
-      ease: [0.22, 1, 0.36, 1],
+      ease: [0.22, 1, 0.36, 1] as const,
     },
   },
 };
@@ -79,7 +79,7 @@ export const imageRevealVariants: Variants = {
     opacity: 1,
     transition: {
       duration: 1.2,
-      ease: [0.76, 0, 0.24, 1],
+      ease: [0.76, 0, 0.24, 1] as const,
     },
   },
 };
@@ -90,7 +90,7 @@ export const lineRevealVariants: Variants = {
     scaleX: 1,
     transition: {
       duration: 1.0,
-      ease: [0.22, 1, 0.36, 1],
+      ease: [0.22, 1, 0.36, 1] as const,
       delay: 0.4,
     },
   },
@@ -103,7 +103,7 @@ export const timelineItemVariants: Variants = {
     x: 0,
     transition: {
       duration: 0.7,
-      ease: [0.22, 1, 0.36, 1],
+      ease: [0.22, 1, 0.36, 1] as const,
     },
   },
 };

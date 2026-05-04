@@ -77,7 +77,7 @@ function StatCard({ end, prefix = "", suffix = "", description, index }: StatPro
         className="absolute bottom-0 left-0 h-[2px] bg-brand-blue"
         initial={{ width: '0%' }}
         animate={isInView ? { width: '100%' } : {}}
-        transition={{ delay: 0.6 + index * 0.1, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ delay: 0.6 + index * 0.1, duration: 0.8, ease: [0.22, 1, 0.36, 1] as const }}
       />
     </motion.div>
   );
@@ -150,7 +150,7 @@ export default function Authority() {
               className="h-[1px] mb-8 bg-gradient-to-r from-brand-blue/50 via-slate-700 to-transparent"
               variants={{
                 hidden: { scaleX: 0, originX: 0 },
-                visible: { scaleX: 1, transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] } },
+                visible: { scaleX: 1, transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] as const } },
               }}
             />
 

@@ -78,7 +78,7 @@ export default function Services() {
               initial={{ width: 0 }}
               whileInView={{ width: 64 }}
               viewport={{ once: true }}
-              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
+              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] as const, delay: 0.4 }}
             />
           </motion.div>
 
@@ -88,7 +88,7 @@ export default function Services() {
               initial={{ y: 80, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] as const, delay: 0.1 }}
             >
               Capacidad Operativa y{' '}
               <br className="hidden md:block" />
@@ -167,14 +167,14 @@ export default function Services() {
               <motion.div
                 className="absolute bottom-0 left-0 h-[2px] bg-brand-red"
                 variants={{ rest: { width: '0%' }, hover: { width: '100%' } }}
-                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] as const }}
               />
 
               {/* Left side accent */}
               <motion.div
                 className="absolute top-0 left-0 w-[2px] bg-brand-blue"
                 variants={{ rest: { height: '0%' }, hover: { height: '100%' } }}
-                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as const, delay: 0.1 }}
               />
             </motion.div>
           ))}

@@ -22,7 +22,7 @@ export const splitTextVariants: Variants = {
     opacity: 1,
     clipPath: 'inset(0 0 0% 0)',
     transition: {
-      ease: [0.16, 1, 0.3, 1],
+      ease: [0.16, 1, 0.3, 1] as const,
       duration: 1.0,
     },
   },
@@ -51,7 +51,7 @@ export const statItemVariants: Variants = {
     scale: 1,
     filter: 'blur(0px)',
     transition: {
-      ease: [0.16, 1, 0.3, 1],
+      ease: [0.16, 1, 0.3, 1] as const,
       duration: 0.8,
     },
   },

@@ -166,7 +166,7 @@ export default function Hero() {
                 className="hidden sm:block h-[1px] bg-slate-700"
                 initial={{ width: 0 }}
                 animate={{ width: 96 }}
-                transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.5 }}
+                transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] as const, delay: 0.5 }}
               />
             </motion.div>
 
@@ -191,7 +191,7 @@ export default function Hero() {
               className="mb-8 h-[1px] bg-gradient-to-r from-brand-blue/60 via-slate-700 to-transparent"
               initial={{ scaleX: 0, originX: 0 }}
               animate={{ scaleX: 1 }}
-              transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.7 }}
+              transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] as const, delay: 0.7 }}
             />
 
             {/* Subtitle */}
@@ -241,7 +241,7 @@ export default function Hero() {
                 index === currentSlide ? 'bg-brand-blue' : 'bg-slate-600 hover:bg-slate-400'
               }`}
               animate={{ width: index === currentSlide ? 48 : 16 }}
-              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] as const }}
               aria-label={`Ir al slide ${index + 1}`}
             />
           ))}

@@ -6,7 +6,7 @@ export const leftPanelVariants: Variants = {
     x: 0,
     opacity: 1,
     filter: 'blur(0px)',
-    transition: { duration: 1.0, ease: [0.16, 1, 0.3, 1] }
+    transition: { duration: 1.0, ease: [0.16, 1, 0.3, 1] as const }
   }
 };
 
@@ -16,7 +16,7 @@ export const rightPanelVariants: Variants = {
     x: 0,
     opacity: 1,
     filter: 'blur(0px)',
-    transition: { duration: 1.0, ease: [0.16, 1, 0.3, 1], delay: 0.15 }
+    transition: { duration: 1.0, ease: [0.16, 1, 0.3, 1] as const, delay: 0.15 }
   }
 };
 
@@ -33,7 +33,7 @@ export const formItemVariants: Variants = {
     y: 0,
     opacity: 1,
     filter: 'blur(0px)',
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }
   }
 };
 
@@ -43,6 +43,6 @@ export const successMessageVariants: Variants = {
     scale: 1,
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] }
+    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const }
   }
 };

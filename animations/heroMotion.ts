@@ -21,7 +21,7 @@ export const textRevealVariants: Variants = {
     opacity: 1,
     clipPath: 'inset(0% 0% 0% 0%)',
     transition: {
-      ease: [0.16, 1, 0.3, 1],
+      ease: [0.16, 1, 0.3, 1] as const,
       duration: 1.0,
     },
   },
@@ -43,7 +43,7 @@ export const fadeUpVariants: Variants = {
     opacity: 1,
     filter: 'blur(0px)',
     transition: {
-      ease: [0.22, 1, 0.36, 1],
+      ease: [0.22, 1, 0.36, 1] as const,
       duration: 0.9,
     },
   },
@@ -63,7 +63,7 @@ export const backgroundFadeVariants: Variants = {
     opacity: 1,
     scale: 1,
     transition: {
-      ease: [0.25, 0.46, 0.45, 0.94],
+      ease: [0.25, 0.46, 0.45, 0.94] as const,
       duration: 1.8,
     },
   },
@@ -96,7 +96,7 @@ export const lineRevealVariants: Variants = {
     scaleX: 1,
     transition: {
       duration: 1.2,
-      ease: [0.22, 1, 0.36, 1],
+      ease: [0.22, 1, 0.36, 1] as const,
       delay: 0.6,
     },
   },
@@ -109,7 +109,7 @@ export const badgeVariants: Variants = {
     opacity: 1,
     x: 0,
     transition: {
-      ease: [0.22, 1, 0.36, 1],
+      ease: [0.22, 1, 0.36, 1] as const,
       duration: 0.7,
     },
   },
@@ -126,6 +126,6 @@ export const dotVariants: Variants = {
   active: {
     width: '48px',
     opacity: 1,
-    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] as const },
   },
 };

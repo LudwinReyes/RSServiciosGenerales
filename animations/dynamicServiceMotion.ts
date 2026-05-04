@@ -13,7 +13,7 @@ export const splitTextVariants: Variants = {
   visible: { 
     y: 0, 
     opacity: 1, 
-    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } 
+    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const } 
   }
 };
 
@@ -22,7 +22,7 @@ export const contentFadeUp: Variants = {
   visible: { 
     y: 0, 
     opacity: 1, 
-    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } 
+    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const } 
   }
 };
 
@@ -31,6 +31,6 @@ export const sidebarVariants: Variants = {
   visible: { 
     x: 0, 
     opacity: 1, 
-    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 } 
+    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const, delay: 0.2 } 
   }
 };

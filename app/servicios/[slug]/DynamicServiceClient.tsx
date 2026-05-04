@@ -14,11 +14,11 @@ const containerV = {
 };
 const slideUpV = {
   hidden: { y: 45, opacity: 0, filter: 'blur(5px)' },
-  visible: { y: 0, opacity: 1, filter: 'blur(0px)', transition: { duration: 0.85, ease: [0.16, 1, 0.3, 1] } },
+  visible: { y: 0, opacity: 1, filter: 'blur(0px)', transition: { duration: 0.85, ease: [0.16, 1, 0.3, 1] as const } },
 };
 const sidebarV = {
   hidden: { x: 40, opacity: 0 },
-  visible: { x: 0, opacity: 1, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.25 } },
+  visible: { x: 0, opacity: 1, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const, delay: 0.25 } },
 };
 
 /* ─── Gallery Lightbox ────────────────────────────────────── */
@@ -61,7 +61,7 @@ function Lightbox({ images, startIndex, onClose }: { images: string[]; startInde
         key={current}
         initial={{ opacity: 0, scale: 0.96 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] as const }}
         className="relative w-full max-w-5xl h-[75vh]"
         onClick={(e) => e.stopPropagation()}
       >
@@ -119,7 +119,7 @@ export default function DynamicServiceClient({ service }: { service: Service }) 
           className={`absolute bottom-0 left-0 h-[3px] ${accentBg}`}
           initial={{ width: 0 }}
           animate={{ width: '40%' }}
-          transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1], delay: 0.6 }}
+          transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] as const, delay: 0.6 }}
         />
 
         {/* Content */}
@@ -221,7 +221,7 @@ export default function DynamicServiceClient({ service }: { service: Service }) 
                     initial={{ opacity: 0, x: -16 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: i * 0.08, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                    transition={{ delay: i * 0.08, duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }}
                     className="flex items-start gap-4 p-5 bg-deep-slate border border-slate-800 hover:border-slate-600 transition-colors duration-300 group"
                   >
                     <CheckCircle2 className={`w-5 h-5 ${accentText} mt-0.5 shrink-0`} />
@@ -243,7 +243,7 @@ export default function DynamicServiceClient({ service }: { service: Service }) 
                     initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: i * 0.1, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+                    transition={{ delay: i * 0.1, duration: 0.65, ease: [0.22, 1, 0.36, 1] as const }}
                     className="relative bg-deep-slate border border-slate-800 p-7 group hover:border-slate-600 transition-colors duration-300 overflow-hidden"
                   >
                     {/* Ghost step number */}
@@ -256,7 +256,7 @@ export default function DynamicServiceClient({ service }: { service: Service }) 
                       initial={{ width: '0%' }}
                       whileInView={{ width: '100%' }}
                       viewport={{ once: true }}
-                      transition={{ delay: 0.3 + i * 0.1, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                      transition={{ delay: 0.3 + i * 0.1, duration: 0.7, ease: [0.22, 1, 0.36, 1] as const }}
                     />
                     <span className={`font-heading text-xs ${accentText} tracking-[0.2em] uppercase mb-3 block`}>
                       Paso {step.step}
