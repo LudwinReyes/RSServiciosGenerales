@@ -1,55 +1,128 @@
 'use client';
 
-import { motion } from 'motion/react';
+import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Wrench } from 'lucide-react';
+import { motion } from 'motion/react';
+import { ArrowRight } from 'lucide-react';
 import { Service } from '@/data/servicesData';
-import { gridContainerVariants, cardItemVariants } from '@/animations/servicesGridMotion';
+
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
+};
+
+const cardVariants = {
+  hidden: { y: 50, opacity: 0, filter: 'blur(8px)' },
+  visible: {
+    y: 0,
+    opacity: 1,
+    filter: 'blur(0px)',
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+  },
+};
 
 export default function ServicesGridClient({ services }: { services: Service[] }) {
   return (
-    <motion.div 
-      variants={gridContainerVariants}
+    <motion.div
+      variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+      className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6"
     >
-      {services.map((service) => (
-        <Link href={`/servicios/${service.slug}`} key={service.id} className="block group">
-          <motion.div 
-            variants={cardItemVariants}
-            className="h-full bg-deep-slate border border-slate-800 p-8 hover:border-brand-blue transition-colors duration-300 flex flex-col relative overflow-hidden"
-          >
-            {/* Elemento decorativo hover */}
-            <div className="absolute top-0 right-0 w-32 h-32 bg-brand-blue opacity-0 group-hover:opacity-10 blur-3xl transition-opacity duration-500 rounded-full" />
-            
-            <div className="mb-6 inline-block bg-white/5 p-4 rounded-lg group-hover:bg-brand-blue/10 transition-colors duration-300">
-              <motion.div
-                variants={{
-                  rest: { scale: 1 },
-                  hover: { scale: 1.1, rotate: 5, transition: { duration: 0.3 } }
-                }}
-                initial="rest"
-                whileHover="hover"
-              >
-                <Wrench className="w-8 h-8 text-brand-blue" />
-              </motion.div>
-            </div>
-            
-            <h3 className="text-xl font-heading text-white uppercase tracking-tight mb-4 group-hover:text-brand-blue transition-colors duration-300">
-              {service.title}
-            </h3>
-            
-            <p className="font-body text-slate-400 text-sm leading-relaxed mb-8 flex-1">
-              {service.shortDescription}
-            </p>
-            
-            <div className="flex items-center text-xs font-heading tracking-widest uppercase text-slate-300 group-hover:text-brand-red transition-colors duration-300 mt-auto">
-              Ver Detalles <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-2" />
-            </div>
+      {services.map((service, idx) => {
+        const isBlue = service.accentColor === 'blue';
+        const accentClass = isBlue ? 'bg-brand-blue' : 'bg-brand-red';
+        const accentText = isBlue ? 'text-brand-blue' : 'text-brand-red';
+        const accentBorder = isBlue ? 'group-hover:border-brand-blue/50' : 'group-hover:border-brand-red/50';
+
+        return (
+          <motion.div key={service.id} variants={cardVariants}>
+            <Link href={`/servicios/${service.slug}`} className="block group h-full">
+              <div className={`relative flex flex-col h-full bg-deep-slate border border-slate-800/80 ${accentBorder} overflow-hidden transition-all duration-500`}>
+
+                {/* ── Image with overlay ── */}
+                <div className="relative h-52 overflow-hidden bg-slate-900">
+                  {/* Placeholder overlay (visible when no image) */}
+                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-slate-900 to-onyx-black">
+                    <span className="font-heading text-[80px] leading-none text-white/[0.03] select-none">
+                      {String(idx + 1).padStart(2, '0')}
+                    </span>
+                  </div>
+
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                    onError={() => {/* silently fall back to bg */}}
+                  />
+
+                  {/* Gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-deep-slate via-deep-slate/40 to-transparent" />
+
+                  {/* Tag badge */}
+                  <div className="absolute top-4 left-4 z-10">
+                    <span className={`${accentClass} text-white font-heading text-[10px] tracking-[0.2em] uppercase px-3 py-1`}>
+                      {service.tag}
+                    </span>
+                  </div>
+
+                  {/* Number */}
+                  <div className="absolute top-4 right-4 z-10">
+                    <span className="font-heading text-xs text-white/30 tracking-widest">
+                      {String(idx + 1).padStart(2, '0')}
+                    </span>
+                  </div>
+                </div>
+
+                {/* ── Content ── */}
+                <div className="flex flex-col flex-1 p-7">
+                  <h3 className={`text-xl font-heading text-white uppercase tracking-tight mb-3 ${accentText} transition-colors duration-300 leading-tight`}
+                    style={{ color: 'white' }}
+                  >
+                    <span className="group-hover:text-inherit transition-colors duration-300">
+                      {service.title}
+                    </span>
+                  </h3>
+
+                  <p className="font-body text-sm text-slate-400 leading-relaxed mb-6 flex-1 group-hover:text-slate-300 transition-colors duration-300">
+                    {service.shortDescription}
+                  </p>
+
+                  {/* Bullets */}
+                  <ul className="space-y-2 mb-7">
+                    {service.bullets.slice(0, 3).map((bullet) => (
+                      <li key={bullet} className="flex items-start gap-2.5">
+                        <div className={`mt-1.5 w-1 h-1 rounded-full shrink-0 ${accentClass}`} />
+                        <span className="font-body text-xs text-slate-500 leading-relaxed group-hover:text-slate-400 transition-colors duration-300">
+                          {bullet}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* CTA */}
+                  <div className={`flex items-center gap-2 pt-5 border-t border-slate-800 group-hover:border-slate-700 transition-colors duration-300`}>
+                    <span className={`font-heading text-xs uppercase tracking-widest text-slate-500 group-hover:${accentText} transition-colors duration-300`}>
+                      Ver Detalles
+                    </span>
+                    <ArrowRight className={`w-3.5 h-3.5 text-slate-600 group-hover:${accentText} transform group-hover:translate-x-1.5 transition-all duration-300`} />
+                  </div>
+                </div>
+
+                {/* Bottom accent bar */}
+                <motion.div
+                  className={`absolute bottom-0 left-0 h-[2px] ${accentClass}`}
+                  initial={{ width: '0%' }}
+                  whileHover={{ width: '100%' }}
+                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                />
+              </div>
+            </Link>
           </motion.div>
-        </Link>
-      ))}
+        );
+      })}
     </motion.div>
   );
 }
