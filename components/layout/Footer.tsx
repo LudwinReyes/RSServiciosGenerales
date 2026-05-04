@@ -2,6 +2,7 @@
 
 import { motion } from 'motion/react';
 import { Mail, Phone, MapPin, ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 import {
   ctaContainerVariants,
@@ -64,9 +65,14 @@ export default function Footer() {
         >
           {/* Column 1: Brand */}
           <motion.div variants={columnVariants} className="lg:col-span-1">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-8 h-8 bg-brand-red flex items-center justify-center font-heading text-lg text-white">RS</div>
-              <span className="font-heading text-lg tracking-widest text-white">CONSORCIO INDUSTRIAL PERU</span>
+            <div className="mb-6">
+              <Image 
+                src="/img/empresa/rsconsorcioindustrial.png" 
+                alt="RS Consorcio Industrial" 
+                width={510} 
+                height={78} 
+                className="h-auto w-[180px] lg:w-[255px] object-contain"
+              />
             </div>
             <p className="font-body text-sm text-slate-400 leading-relaxed font-light mb-6">
               Sólida experiencia ejecutando proyectos de infraestructura, electrificación y mantenimiento corporativo. Excelencia técnica y seguridad para la industria peruana.
